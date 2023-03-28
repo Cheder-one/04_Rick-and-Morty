@@ -14,6 +14,8 @@ const EpisodesList = () => {
     setCurrentPage(pageNumber);
   };
 
+  // const startIndex = (pageNumber - 1) * itemsPerPage;
+
   return (
     <>
       <div className="container">
