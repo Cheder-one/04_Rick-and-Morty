@@ -5,7 +5,7 @@ import Pagination from "./pagination";
 
 const EpisodesList = () => {
   const totalItems = episodes.length;
-  const itemsPerPage = 8;
+  const itemsOnPage = 8;
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -25,7 +25,7 @@ const EpisodesList = () => {
         <div className="row">
           <Pagination
             totalItems={totalItems}
-            itemsPerPage={itemsPerPage}
+            itemsOnPage={itemsOnPage}
             onPageChange={handlePageChange}
             currentPage={currentPage}
           />
