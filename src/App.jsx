@@ -1,5 +1,5 @@
 import React from "react";
-import EpisodesList from "./components/episodesList";
+import EpisodesList from "./app/components/episodesList";
 
 function App() {
   return (

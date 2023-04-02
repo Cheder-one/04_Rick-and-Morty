@@ -2,30 +2,32 @@ import React, { useState } from "react";
 import { episodes } from "../fakeStorage/episodes";
 import Episode from "./episode";
 import Pagination from "./pagination";
+import { getPageItems } from "../utils/paginate";
 
 const EpisodesList = () => {
   const totalItems = episodes.length;
-  const itemsOnPage = 8;
+  const pageSize = 8;
 
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (pageNumber) => {
-    console.log(`pageNumber: ${pageNumber}`);
     setCurrentPage(pageNumber);
   };
+
+  const itemsCurntPage = getPageItems(episodes, currentPage, pageSize);
 
   return (
     <>
       <div className="container">
         <div className="row">
-          {episodes.map((episode) => (
+          {itemsCurntPage.map((episode) => (
             <Episode key={episode.id} {...episode} />
           ))}
         </div>
         <div className="row">
           <Pagination
             totalItems={totalItems}
-            itemsOnPage={itemsOnPage}
+            pageSize={pageSize}
             onPageChange={handlePageChange}
             currentPage={currentPage}
           />
