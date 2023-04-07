@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { episodes } from "../fakeStorage/episodes";
 import Episode from "./episode";
 import Pagination from "./pagination";
 import { getPageItems } from "../utils/paginate";
 import GroupList from "./groupList";
+import { episodes, fetchYears } from "../fakeApi/episodesApi";
 
 const EpisodesList = () => {
   const totalItems = episodes.length;
   const pageSize = 8;
 
   const [currentPage, setCurrentPage] = useState(1);
+  // const [episodes, setEpisodes] = useState([]);
+  const [years] = useState(fetchYears);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -21,7 +23,7 @@ const EpisodesList = () => {
       <div className="container pt-2">
         <div className="row">
           <div className="col-4">
-            <GroupList />
+            <GroupList seriesYears={years} />
           </div>
           <div className="col-8">
             <div style={{ height: "500px" }}>
