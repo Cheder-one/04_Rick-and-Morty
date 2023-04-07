@@ -135,21 +135,22 @@ const episodes = [
   }
 ];
 
-// const filterEpisodesByYear = (episodes, year) => {
-//   const filteredEp = [];
-//   for (let i = 0; i < episodes.length; i++) {
-//     const episode = episodes[i];
-//     const epYear = episode.airDate.slice(-4);
-//     if (epYear === year) {
-//       filteredEp.push(episode);
-//     }
-//   }
-//   return filteredEp;
-// };
+const filterEpisodesByYear = (episodes, year) => {
+  const filteredEp = [];
+  for (let i = 0; i < episodes.length; i++) {
+    const episode = episodes[i];
+    const epYear = episode.airDate.slice(-4);
+    if (epYear === year) {
+      filteredEp.push(episode);
+    }
+  }
+  return filteredEp;
+};
+filterEpisodesByYear(episodes, "2013");
 
 // -------------Refactoring-------------
 
-const filterEpisodesByYear = (episodes, year) => {
-  return episodes.filter(episode => episode.airDate.slice(-4) === year);
+const filterEpisodesByYear1 = (episodes, year) => {
+  return episodes.filter((episode) => episode.airDate.slice(-4) === year);
 };
-filterEpisodesByYear(episodes, "2013");
+filterEpisodesByYear1(episodes, "2013");
