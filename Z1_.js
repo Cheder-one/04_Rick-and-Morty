@@ -1,4 +1,4 @@
-export const episodes = [
+const episodes = [
   {
     id: 1,
     name: "Pilot",
@@ -134,3 +134,22 @@ export const episodes = [
     created: "2017-11-10T12:56:35.772Z"
   }
 ];
+
+// const filterEpisodesByYear = (episodes, year) => {
+//   const filteredEp = [];
+//   for (let i = 0; i < episodes.length; i++) {
+//     const episode = episodes[i];
+//     const epYear = episode.airDate.slice(-4);
+//     if (epYear === year) {
+//       filteredEp.push(episode);
+//     }
+//   }
+//   return filteredEp;
+// };
+
+// -------------Refactoring-------------
+
+const filterEpisodesByYear = (episodes, year) => {
+  return episodes.filter(episode => episode.airDate.slice(-4) === year);
+};
+filterEpisodesByYear(episodes, "2013");
