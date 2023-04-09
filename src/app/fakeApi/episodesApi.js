@@ -135,7 +135,7 @@ export const episodes = [
   }
 ];
 
-export const fetchAll = () => {
+export const fetchAll = (year) => {
   return new Promise((resolve) => {
     // TODO Добавить фильтрацию
     setTimeout(() => {
