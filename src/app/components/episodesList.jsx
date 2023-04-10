@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import Episode from "./episode";
 import Pagination from "./pagination";
 import { getPageItems } from "../utils/paginate";
-import FilterList from "./filterList";
+import GroupList from "./groupList";
 import { fetchAll, fetchYears } from "../fakeApi/episodesApi";
 
 const EpisodesList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [episodes, setEpisodes] = useState([]);
-  const [years] = useState([]);
+  const [years, setYears] = useState([]);
   const [filter, setFilter] = useState();
 
   const totalItems = episodes.length;
-  const pageSize = 8;
+  const pageSize = 6;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -28,6 +28,10 @@ const EpisodesList = () => {
     getFilteredEpisodes(filter);
   }, [filter]);
 
+  useEffect(() => {
+    fetchYears().then((response) => setYears(response));
+  }, []);
+
   const handleFilterChange = (filter) => {
     setFilter(filter);
   };
@@ -38,14 +42,14 @@ const EpisodesList = () => {
       <div className="container pt-2">
         <div className="row">
           <div className="col-4">
-            <FilterList
-              yearsEpisodes={years}
+            <GroupList
+              items={years}
               filter={filter}
               onFilterChange={handleFilterChange}
             />
           </div>
           <div className="col-8">
-            <div style={{ height: "500px" }}>
+            <div style={{ height: "400px" }}>
               <div className="row">
                 {itemsCurntPage.map((episode) => (
                   <Episode key={episode.id} {...episode} />
