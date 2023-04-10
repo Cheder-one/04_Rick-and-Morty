@@ -1,7 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GroupList = ({ items, filter, onFilterChange }) => {
+const GroupList = ({
+  items,
+  filter,
+  valueProperty,
+  contentProperty,
+  onFilterChange
+}) => {
   return (
     <div className="list-group">
       {items.map((item) => (
@@ -11,9 +17,9 @@ const GroupList = ({ items, filter, onFilterChange }) => {
             (item.id === filter ? " active" : "")
           }
           onClick={() => onFilterChange(item.id)}
-          key={item.id}
+          key={item[valueProperty]}
         >
-          {item.text}
+          {item[contentProperty]}
         </button>
       ))}
     </div>
@@ -23,6 +29,8 @@ const GroupList = ({ items, filter, onFilterChange }) => {
 GroupList.propTypes = {
   items: PropTypes.array.isRequired,
   filter: PropTypes.string,
+  valueProperty: PropTypes.string.isRequired,
+  contentProperty: PropTypes.string.isRequired,
   onFilterChange: PropTypes.func.isRequired
 };
 
