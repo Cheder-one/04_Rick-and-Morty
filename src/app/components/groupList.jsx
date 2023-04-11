@@ -26,6 +26,11 @@ const GroupList = ({
   );
 };
 
+GroupList.defaultProps = {
+  valueProperty: "id",
+  contentProperty: "text"
+};
+
 GroupList.propTypes = {
   items: PropTypes.array.isRequired,
   filter: PropTypes.string,

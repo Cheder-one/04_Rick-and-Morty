@@ -45,8 +45,6 @@ const EpisodesList = () => {
             <GroupList
               items={years}
               filter={filter}
-              valueProperty="id"
-              contentProperty="text"
               onFilterChange={handleFilterChange}
             />
           </div>
