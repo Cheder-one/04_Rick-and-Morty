@@ -137,10 +137,13 @@ export const episodes = [
 
 export const fetchAll = (year) => {
   return new Promise((resolve) => {
-    // TODO Добавить фильтрацию
+    const filteredEpisodes = episodes.filter(({ airDate }) =>
+      year ? airDate.slice(-4) === year : true
+    );
+
     setTimeout(() => {
-      resolve(episodes);
-    }, 2000);
+      resolve(filteredEpisodes);
+    }, 500);
   });
 };
 
@@ -163,6 +166,6 @@ export const fetchYears = () => {
 
     setTimeout(() => {
       resolve(filters);
-    }, 2000);
+    }, 1000);
   });
 };
