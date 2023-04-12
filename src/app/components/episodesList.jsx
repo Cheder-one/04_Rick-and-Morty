@@ -36,17 +36,31 @@ const EpisodesList = () => {
     setFilter(filter);
   };
 
+  const handleReset = () => {
+    setFilter(undefined); // Ничего не устанавливаем (undefined)
+  };
+
   const itemsCurntPage = getPageItems(episodes, currentPage, pageSize);
   return (
     <>
       <div className="container pt-2">
         <div className="row">
           <div className="col-4">
-            <GroupList
-              items={years}
-              filter={filter}
-              onFilterChange={handleFilterChange}
-            />
+            {Boolean(years.length) && (
+              <>
+                <GroupList
+                  items={years}
+                  filter={filter}
+                  onFilterChange={handleFilterChange}
+                />
+                <div className="d-grid">
+                  <hr />
+                  <button className="btn btn-primary" onClick={handleReset}>
+                    Очистить
+                  </button>
+                </div>
+              </>
+            )}
           </div>
           <div className="col-8">
             <div style={{ height: "400px" }}>
